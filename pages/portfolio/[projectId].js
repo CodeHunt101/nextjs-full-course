@@ -1,4 +1,4 @@
-import { Router, useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 
 const PortfolioProjectPage = () => {
   const router = useRouter()
@@ -8,7 +8,7 @@ const PortfolioProjectPage = () => {
 
   // send a request to some backend server
   // to fetch the pice of data with an id of router.query.projectId
-  
+
   return (
     <div>
       <h1>The Portfolio Project Page</h1>
