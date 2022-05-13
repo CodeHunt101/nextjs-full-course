@@ -34,7 +34,7 @@ const FilteredEventsPage = () => {
 
     setLoadedEvents(events)
   }, [data])
-  
+
   let pageHeadData = (
     <Head>
       <title>Filtered Events</title>
@@ -43,10 +43,12 @@ const FilteredEventsPage = () => {
   )
 
   if (!loadedEvents) {
-    return <>
-    {pageHeadData}
-    <p className="center">Loading...</p>
-    </>
+    return (
+      <>
+        {pageHeadData}
+        <p className="center">Loading...</p>
+      </>
+    )
   }
 
   const filteredYear = filterData[0]
@@ -73,7 +75,7 @@ const FilteredEventsPage = () => {
   ) {
     return (
       <>
-      {pageHeadData}
+        {pageHeadData}
         <ErrorAlert>
           <p>Invalid filter. Please adjust your values!</p>
         </ErrorAlert>
@@ -95,7 +97,7 @@ const FilteredEventsPage = () => {
   if (!filteredEvents || filteredEvents.length === 0) {
     return (
       <>
-      {pageHeadData}
+        {pageHeadData}
         <ErrorAlert>
           <p>No events found for the chosen filter!</p>
         </ErrorAlert>
@@ -110,7 +112,7 @@ const FilteredEventsPage = () => {
 
   return (
     <>
-    {pageHeadData}
+      {pageHeadData}
       <ResultsTitle date={date} />
       <EventList items={filteredEvents} />
     </>
