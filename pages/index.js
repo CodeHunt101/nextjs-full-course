@@ -51,9 +51,7 @@ function HomePage() {
       <button onClick={loadFeedbackHandler}>Load feedbacks</button>
       <ul>
         {feedbackItems.map((item) => (
-          <li key={item.id}>
-            {item.email} - {item.text}
-          </li>
+          <li key={item.id}>{item.text}</li>
         ))}
       </ul>
     </div>
