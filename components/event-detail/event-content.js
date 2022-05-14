@@ -1,7 +1,11 @@
-import classes from './event-content.module.css'
+import classes from './event-content.module.css';
 
-function EventContent({ children }) {
-  return <section className={classes.content}>{children}</section>
+function EventContent(props) {
+  return (
+    <section className={classes.content}>
+      {props.children}
+    </section>
+  );
 }
 
-export default EventContent
+export default EventContent;
