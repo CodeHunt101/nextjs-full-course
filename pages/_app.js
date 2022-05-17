@@ -11,7 +11,10 @@ function MyApp({ Component, pageProps }) {
         <Head>
           <title>Next Events</title>
           <meta name="description" content="NextJS Events" />
-          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+          <meta
+            name="viewport"
+            content="initial-scale=1.0, width=device-width"
+          />
         </Head>
         <Component {...pageProps} />
       </Layout>
