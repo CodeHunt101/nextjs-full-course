@@ -1,7 +1,31 @@
 import PostContent from '../../components/posts/post-detail/post-content'
+import { getPostData, getPostsFiles } from '../../lib/posts-util'
 
-const PostDetail = () => {
-  return <PostContent />
+const PostDetailPage = ({ post }) => {
+  return <PostContent post={post} />
 }
 
-export default PostDetail
+export const getStaticProps = ({ params }) => {
+  const { slug } = params
+
+  const postData = getPostData(slug)
+  return {
+    props: {
+      post: postData,
+    },
+    revalidate: 600,
+  }
+}
+
+export const getStaticPaths = () => {
+  const postFilenames = getPostsFiles()
+
+  const slugs = postFilenames.map((fileName) => fileName.replace(/\.md$/, '')) // removes the file extension
+
+  return {
+    paths: slugs.map((slug) => ({ params: { slug } })),
+    fallback: false,
+  }
+}
+
+export default PostDetailPage
