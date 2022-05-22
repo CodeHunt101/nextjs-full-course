@@ -24,16 +24,18 @@ const handler = async (req, res) => {
     }
 
     let client
+
+    const connectionString = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_CLUSTER}.a28iu.mongodb.net/${process.env.DB_NAME_PROJECT}?retryWrites=true&w=majority`
+
     try {
-      client = await MongoClient.connect(
-        `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.a28iu.mongodb.net/${process.env.DB_NAME_PROJECT}?retryWrites=true&w=majority`
-      )
+      console.log('connectionString', connectionString)
+      client = await MongoClient.connect(connectionString)
     } catch (error) {
       res.status(500).json({ message: 'Could not connect to database' })
       return
     }
 
-    const db = client.db('my-site')
+    const db = client.db(process.env.DB_NAME_PROJECT)
 
     try {
       const result = await db.collection('messages').insertOne(newMessage)
