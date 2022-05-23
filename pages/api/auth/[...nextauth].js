@@ -25,7 +25,6 @@ export default NextAuth({
           credentials.password,
           user.password
         )
-        console.log(isValid)
 
         if (!isValid) {
           client.close()
